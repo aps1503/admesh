@@ -4,17 +4,35 @@ matrix:
     - compiler: gcc
       os: linux
       env: EXTRA=--enable-werror
-    - compiler: clang
-      os: linux
     - compiler: gcc
       os: linux
-      arch: arm64
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      env: EXTRA=--enable-werror
+    - compiler: clang
+      os: linux
+    - compiler: clang
+      os: linux
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+    - compiler: gcc
+      os: linux
+      arch: amd64
       addons:
         apt:
           packages:
           - libtool
-    - compiler: clang
-      os: osx
+    - compiler: gcc
+      os: linux
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      addons:
+        apt:
+          packages:
+          - libtool
 
 script:
  - ./autogen.sh
